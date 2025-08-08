@@ -15,7 +15,7 @@ from fpdf import FPDF
 # ================================
 # STREAMLIT CONFIG
 # ================================
-st.set_page_config(page_title="💼 ApplyBuddy – Job Application Helper", page_icon="💼")
+st.set_page_config(page_title="ApplyBuddy – Job Application Helper", page_icon="💼")
 
 st.title("💼 ApplyBuddy – Job Application Helper")
 st.write("Upload your CV, paste a job link, pick a tone, and get a custom cover letter + CV tips.")
