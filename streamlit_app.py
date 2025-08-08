@@ -132,7 +132,6 @@ CV IMPROVEMENT SUGGESTIONS:
         ],
     )
 
-
     return completion.choices[0].message.content
 
 def save_as_docx(text: str) -> BytesIO:
