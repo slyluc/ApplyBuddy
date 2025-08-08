@@ -4,4 +4,4 @@ requests
 beautifulsoup4
 PyMuPDF
 python-docx
-fpdf
+fpdf2
