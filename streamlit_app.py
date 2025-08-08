@@ -125,13 +125,14 @@ CV IMPROVEMENT SUGGESTIONS:
 """.strip()
 
     completion = client.chat.completions.create(
-        model=model,  # e.g., "gpt-4o-mini" or "gpt-5o-mini" if you have it
+        model=model_name,
         messages=[
             {"role": "system", "content": "You are a professional career coach."},
             {"role": "user", "content": prompt},
         ],
-        # Some newer models only allow default temperature; we omit it for compatibility.
     )
+
+
     return completion.choices[0].message.content
 
 def save_as_docx(text: str) -> BytesIO:
@@ -194,9 +195,25 @@ tone_choice = st.selectbox(
     ["Professional", "Friendly", "Confident", "Humble", "Creative"]
 )
 
-# Let power users override model name if they want
-model_default = "gpt-4o-mini"
-model_name = st.text_input("Model (optional; default gpt-4o-mini)", value=model_default)
+
+# Model dropdown with pricing info
+model_choices = {
+    "GPT-5 (input $1.25 / output $10)": "gpt-5",
+    "GPT-5 mini (input $0.25 / output $2)": "gpt-5-mini",
+    "GPT-5 nano (input $0.05 / output $0.40)": "gpt-5-nano",
+    "GPT-4o mini (input $0.15 / output $0.60)": "gpt-4o-mini",
+    "GPT-4.5 (input $75 / output $150)": "gpt-4.5",
+    "o1-pro (input $150 / output $600)": "o1-pro",
+}
+
+model_label = st.selectbox(
+    "Choose a model (with pricing):",
+    list(model_choices.keys()),
+    index=0
+)
+model_name = model_choices[model_label]
+
+
 
 # ================================
 # RUN
